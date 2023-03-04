@@ -241,7 +241,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else:
             sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        text = f"<b>Ok Vro 🌝 /nFile Now Send On Your PM !</b>"
+        text = f"<b>Ok Vro 🌝 \nFile Now Send On Your PM !</b>"
         if PICS:
             sendPhoto(text, context.bot, update.message, random.choice(PICS), reply_markup)
         else:
@@ -311,8 +311,8 @@ def log(update, context):
 
 
 help_string = '''
-<b><a href='https://github.com/codewithweeb/mirror-with-weeb'>WeebZone</a></b> - The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
-Choose a help category:
+<b><a href='https://t.me/DadaXCloud'>DadaXCloud</a></b> - <b>The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
+Choose A Help Category</b>:
 '''
 
 help_string_telegraph_user = f'''
