@@ -239,7 +239,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else:
             sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        text = f"<b>Hey Vro👋🏻, \n\nIf You Want To Use Me, You Have To Join The Channel & Group</b> \n\n<b>NOTE</b>:<code>All The Uploaded Links And Files Will Be Sent Here In Your Private Chat</code>"
+        text = f"<b>Hey Vro😀, \n\nIf You Want To Use Me, You Have To Join The Channel 🙂</b> \n\n<b>NOTE</b>: <code>All The Uploaded Links And Files Will Be Sent Here In Your Private Chat</code>"
         if PICS:
             sendPhoto(text, context.bot, update.message, random.choice(PICS), reply_markup)
         else:
