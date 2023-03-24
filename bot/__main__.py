@@ -587,15 +587,15 @@ def main():
             chat_id, msg_id = map(int, f)
         try:
             msg = f"<b><u>Bot Restarted Successfully!</u></b>\n\n"
-            msg += f"<b>• Date:</b> {date}\n"
-            msg += f"<b>• Time:</b> {time}\n"
-            msg += f"<b>• Time Zone:</b> {TIMEZONE}"
+            msg += f"<b>➣ Date:</b> {date}\n"
+            msg += f"<b>➣ Time:</b> {time}\n"
+            msg += f"<b>➣ Time Zone:</b> {TIMEZONE}"
             bot.edit_message_text(msg, chat_id, msg_id)
         except Exception as e:
             LOGGER.info(e)
         osremove(".restartmsg")       
     elif not notifier_dict and AUTHORIZED_CHATS:
-        text = f"<b><u>Bot Restarted Successfully!</u></b>\n\n<b>• Time:</b> {time}\n<b>• Date:</b> {date}\n<b>• Time Zone:</b> {TIMEZONE}\n\n<b>#Please-ReDownload Your Tasks</b>"
+        text = f"<b><u>Bot Restarted Successfully!</u></b>\n\n<b>➣ Time:</b> {time}\n<b>➣ Date:</b> {date}\n<b>➣ Time Zone:</b> {TIMEZONE}\n\n<b>#Please-ReDownload Your Tasks 🤧</b>"
         for id_ in AUTHORIZED_CHATS:
             try:
                 bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
