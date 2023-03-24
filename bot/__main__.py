@@ -547,47 +547,55 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = f"😎Restarted successfully❗\n"
-                    msg += f"📅DATE: {date}\n"
-                    msg += f"⌚TIME: {time}\n"
-                    msg += f"🌐TIMEZONE: {TIMEZONE}\n"
+                    msg = f"Bot Restarted Successfully❗\n"
                 else:
-                    msg = f"😎Bot Restarted!\n"
-                    msg += f"📅DATE: {date}\n"
-                    msg += f"⌚TIME: {time}\n"
-                    msg += f"🌐TIMEZONE: {TIMEZONE}"
+                    msg = f"Bot Restarted!\n"
+                msg += f"Date: {date}\n"
+                msg += f"Time: {time}\n"
+                msg += f"Time Zone: {TIMEZONE}\n"
 
                 for tag, links in data.items():
-                     msg += f"\n{tag}: "
-                     for index, link in enumerate(links, start=1):
-                         msg += f" <a href='{link}'>{index}</a> |"
-                         if len(msg.encode()) > 4000:
-                             if '😎Restarted successfully❗' in msg and cid == chat_id:
-                                 bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
-                                 osremove(".restartmsg")
-                             else:
-                                 try:
-                                     bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
-                                 except Exception as e:
-                                     LOGGER.error(e)
-                             msg = ''
-                if '😎Restarted successfully❗' in msg and cid == chat_id:
-                     bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
-                     osremove(".restartmsg")
+                    msg += f"\n{tag}: "
+                    for index, link in enumerate(links, start=1):
+                        msg += f" <a href='{link}'>{index}</a> |"
+                        if len(msg.encode()) > 4000:
+                            if 'Bot Restarted Successfully❗' in msg and cid == chat_id:
+                                try:
+                                    bot.editMessageText(msg, chat_id, msg_id)
+                                except:
+                                    pass
+                                osremove(".restartmsg")
+                            else:
+                                try:
+                                    bot.sendMessage(cid, msg)
+                                except Exception as e:
+                                    LOGGER.error(e)
+                            msg = ''
+                if 'Bot Restarted Successfully❗' in msg and cid == chat_id:
+                    try:
+                        bot.editMessageText(msg, chat_id, msg_id)
+                    except:
+                        pass
+                    osremove(".restartmsg")
                 else:
                     try:
-                        bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
+                        bot.sendMessage(cid, msg)
                     except Exception as e:
                         LOGGER.error(e)
-
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        msg = f"😎Restarted successfully❗\n📅DATE: {date}\n⌚TIME: {time}\n🌐TIMEZONE: {TIMEZONE}\n"
-        bot.edit_message_text(msg, chat_id, msg_id)
-        osremove(".restartmsg")
+        try:
+            msg = f"<b><u>Bot Restarted Successfully!</u></b>\n\n"
+            msg += f"<b>• Date:</b> {date}\n"
+            msg += f"<b>• Time:</b> {time}\n"
+            msg += f"<b>• Time Zone:</b> {TIMEZONE}"
+            bot.edit_message_text(msg, chat_id, msg_id)
+        except Exception as e:
+            LOGGER.info(e)
+        osremove(".restartmsg")       
     elif not notifier_dict and AUTHORIZED_CHATS:
-        text = f"😎Bot Restarted❗ \n📅DATE: {date} \n⌚TIME: {time} \n🌐TIMEZONE: {TIMEZONE}"
+        text = f"<b><u>Bot Restarted Successfully!</u></b>\n\n<b>• Time:</b> {time}\n<b>• Date:</b> {date}\n<b>• Time Zone:</b> {TIMEZONE}\n\n<b>#Please-ReDownload Your Tasks</b>"
         for id_ in AUTHORIZED_CHATS:
             try:
                 bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
@@ -612,7 +620,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("💥𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝❗")
+    LOGGER.info("Bot Boosted ")
     signal(SIGINT, exit_clean_up)
 
 app.start()
