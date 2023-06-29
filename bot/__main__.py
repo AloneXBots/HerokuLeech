@@ -586,9 +586,9 @@ def main():
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
         try:
-            msg = f"<b><u>Bot Restarted Successfully!</u></b>\n\n"
-            msg += f"<b>➣ Date:</b> {date}\n"
-            msg += f"<b>➣ Time:</b> {time}\n"
+            msg = f"<b><u>Bot Restarted Successfully!</u></b>"
+            msg += f"<b>➣ Date:</b> {date}"
+            msg += f"<b>➣ Time:</b> {time}"
             msg += f"<b>➣ Time Zone:</b> {TIMEZONE}"
             bot.edit_message_text(msg, chat_id, msg_id)
         except Exception as e:
